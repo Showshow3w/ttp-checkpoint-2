@@ -29,7 +29,9 @@ function SectionA() {
   // A1.
   // Declare a variable called myName and assign it your first name as a string.
   // Declare a variable called myCity and assign it the city you are from.
-
+  let myName = "Shun Lei"
+  let myCity = "Yangon"
+  let sum = 25 + 17
 
   // A2.
   // Inside the return below, add a <p> tag that displays your name.
@@ -56,13 +58,20 @@ function SectionA() {
   // EXPLAIN: What is JSX? How is it different from plain HTML?
   //          Why do you need curly braces to embed a variable's value?
   //
-  //          answer:
+  //          answer: because without curly braces, reacts thinks you are typing text and will print out the 
+  //          variable name instead of its value.
 
   return (
     <div>
       <h2>Section A — JSX Basics</h2>
       {/* Your output goes below this line */}
+      <p>{myName}</p>
+      <p>{myCity}</p>
 
+      <p>{myName.toUpperCase()}</p>
+      <p>{myName.length} characters</p>
+
+      <p>25 + 17 = {sum}</p>
     </div>
   )
 }
@@ -86,7 +95,18 @@ function SectionA() {
 //     (href="#" is fine — we are not building real links yet)
 //
 // Write PageHeader here:
-
+function PageHeader(){
+  return(
+    <header>
+      <h1>My React App</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+  )
+}
 
 // B2.
 // Create a component called PageFooter.
@@ -94,6 +114,13 @@ function SectionA() {
 //
 // Write PageFooter here:
 
+function PageFooter(){
+  return(
+    <footer>
+      <p>2026 TTP</p>
+    </footer>
+  )
+}
 
 function SectionB() {
   // B3.
@@ -111,7 +138,8 @@ function SectionB() {
     <div>
       <h2>Section B — Your Own Components</h2>
       {/* Render your components below */}
-
+      <PageHeader />
+      <PageFooter />
     </div>
   )
 }
