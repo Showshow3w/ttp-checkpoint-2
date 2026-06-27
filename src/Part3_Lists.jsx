@@ -47,19 +47,32 @@ function SectionA() {
   // EXPLAIN: Why does React require a key prop on each list item?
   //          What happens if two items share the same key?
   //
-  //          answer:
+  //          answer:React require a key prop so it can identify ech item in the list
+  //          and know which is changed ,added or removed.
+  //          if two items share the same key React gets confused and may update the 
+  //          wrong item or casue unexpected behavior!!
 
   return (
     <div>
       <h2>Section A — Rendering a List</h2>
       <h3>All Players</h3>
       <ul>
-        {/* A1: map players here: */}
+        {
+          players.map(function(player){
+            return<li key={player.id}>{player.name} - {player.score}</li>
+          })
+        }
 
       </ul>
 
-      {/* A2: filtered list goes here: */}
-
+      <h3>Score above 30</h3>
+      <ul>
+      {players.filter(function(player){
+        return player.score > 30
+      }).map(function(player){
+        return<li key={player.id}>{player.name} - {player.score}</li>
+      })}
+      </ul>
     </div>
   )
 }
@@ -79,7 +92,13 @@ function SectionA() {
 // It should accept props and display a player's name and score inside a <div>.
 //
 // Write PlayerRow here:
-
+function PlayerRow(props){
+  return(
+    <div>
+      <p>{props.name} - {props.score}</p>
+    </div>
+)
+}
 
 
 function SectionB() {
@@ -94,12 +113,16 @@ function SectionB() {
   // EXPLAIN: What is the advantage of rendering a component inside .map()
   //          compared to mapping to a plain HTML element like <li>?
   //
-  //          answer:
+  //          answer:Using a component in map is cleaner and more reusable
+  //                 than a plain HTML element like li.
+  //                 The component can be reused anywhere.
 
   return (
     <div>
       <h2>Section B — Lists and Components</h2>
-      {/* B2: map PlayerRow components here */}
+      {players.map(function(player){
+        return <PlayerRow key={player.id} name={player.name} score={player.score}/>
+      })}
 
     </div>
   )
